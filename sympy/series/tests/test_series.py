@@ -406,3 +406,15 @@ def test_issue_24266():
 
 def test_issue_26856():
     raises(ValueError, lambda: (2**x).series(x, oo, -1))
+
+def test_issue_27109():
+    from sympy import symbols, exp, sqrt, pi, oo, erf, series
+
+    x = symbols('x', positive=True)
+
+    f2 = 2 * erf(x)
+    s2 = series(f2, x, x0=oo, n=3)
+
+    expected_s2 = -((2 / x) + O(x**(-3), (x, oo))) * (exp(-x**2) / sqrt(pi)) + 2
+
+    assert s2.equals(expected_s2)

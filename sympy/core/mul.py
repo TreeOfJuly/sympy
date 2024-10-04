@@ -1959,17 +1959,19 @@ class Mul(Expr, AssocOp):
                     lt = term.leadterm(x)
                 except ValueError:
                     return term, S.Zero
+                except PoleError:
+                    return term, S.Zero
             return lt
 
         ords = []
 
         try:
             for t in self.args:
-                coeff, exp = t.leadterm(x)
+                coeff, exp = coeff_exp(t, x) # changed from leadterm to coeff_exp
                 if not coeff.has(x):
                     ords.append((t, exp))
                 else:
-                    raise ValueError
+                    raise ValueError("Leading coefficient has a x within it.")
 
             n0 = sum(t[1] for t in ords if t[1].is_number)
             facs = []
