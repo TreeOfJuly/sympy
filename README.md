@@ -211,10 +211,7 @@ place. Ondřej Čertík is still active in the community but is too busy
 with work and family to play a lead development role.
 
 Since then, a lot more people have joined the development and some
-people have also left. You can see the full list in doc/src/aboutus.rst,
-or online at:
-
-<https://docs.sympy.org/dev/aboutus.html#sympy-development-team>
+people have also left. You can see the full list in doc/src/aboutus.rst.
 
 The git history goes back to 2007 when development moved from svn to hg.
 To see the history before that point, look at
